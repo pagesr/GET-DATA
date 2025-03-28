@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# Don't ignore the .gitignore file itself
+!.gitignore
+
+# Don't ignore folders (required for recursive inclusion of files)
+!*/
+
+# Track only Python and shell scripts
+!*.py
+!*.sh
