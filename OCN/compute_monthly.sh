@@ -2,8 +2,8 @@
 
 BASE_PATH="/Volumes/Desk_SSD/ROMS/RE-FORECAST/GET-DATA/OCN/nc_ocn/2013"
 
-for SUBDIR in 01 02; do
-#for SUBDIR in 01 02 03 04 05 06 07 08 09 10 11 12; do
+#for SUBDIR in 01 02; do
+for SUBDIR in 03 04 05 06 07 08 09 10 11 12; do
     INPUT_DIR="${BASE_PATH}/${SUBDIR}01"
     OUTPUT_DIR="${INPUT_DIR}/monthly"
     mkdir -p "$OUTPUT_DIR"
