@@ -39,7 +39,7 @@ from datetime import timedelta, datetime
 import sys
 
 # Log file for warnings and actions
-log_file = "replaced.log"
+log_file = "./logs/replaced.log"
 
 # Start fresh by clearing the log file
 with open(log_file, "w") as f:
@@ -59,13 +59,17 @@ def adjust_time_in_netcdf(filename):
 # Function to extract datetime from a NetCDF filename
 def extract_date(file_name):
     """
-    Assumes filenames like: 'data_YYYY_MM_DD_HH.nc'
-    Extracts and returns a datetime object.
+    Extracts a datetime from filenames like: 'data_YYYY_MM_DD_HH.nc'.
     """
-    parts = file_name.split('_')
-    date_str = f"{parts[1]}-{parts[2]}-{parts[3]} {parts[4][:2]}"
-    return datetime.strptime(date_str, "%Y-%m-%d %H")
+    base = os.path.basename(file_name)  # Just the filename
+    name = os.path.splitext(base)[0]    # Remove '.nc'
+    parts = name.split('_')             # Split by '_'
 
+    if len(parts) != 5:
+        raise ValueError(f"Filename does not match expected format: {file_name}")
+
+    year, month, day, hour = parts[1], parts[2], parts[3], parts[4]
+    return datetime.strptime(f"{year}-{month}-{day} {hour}", "%Y-%m-%d %H")
 # Function to compute number of days in a month (handles leap years)
 def days_in_month(year, month):
     if month == 2:
@@ -78,8 +82,8 @@ def days_in_month(year, month):
 
 # Directory setup
 user_input = sys.argv[1]  # expects a string like '201601'
-base_dir = f"/center1/OAINAK/rpages/CFS/PHYSICS/FORECAST/GET_OCN_CFSV2/nc_ocn_new_cfsv2/{user_input}"
-corrected_dir = f"{base_dir}/corrected"
+base_dir = f"/Volumes/Desk_SSD/ROMS/RE-FORECAST/GET-DATA/OCN/nc_ocn/{user_input}"
+corrected_dir= f"{base_dir}/corrected"
 os.makedirs(corrected_dir, exist_ok=True)
 
 # Gather all existing NetCDF files in the directory
