@@ -126,4 +126,5 @@ done
 
 echo "🎯 Final concatenation complete!"
 ./concat_clm.sh
-./change_time.sh
+# Optional if we need the time to be diffrent
+#./change_time.sh
