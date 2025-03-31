@@ -7,8 +7,7 @@ Y=2013
 BASE_DIR="/Volumes/Desk_SSD/ROMS/RE-FORECAST/GET-DATA/OCN/clm/${Y}"
 
 # 🔁 Loop through each month (01 to 12)
-# for month in $(seq -w 1 12); do
-for month in 03; do
+ for month in $(seq -w 4 12); do
     echo "📦 Processing: $Y/${month}01"
 
     # 🔹 Step 1: Run the CLM creation script

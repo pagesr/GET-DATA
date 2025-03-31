@@ -7,7 +7,8 @@ YEAR=2013
 BASE_DIR="/Volumes/Desk_SSD/ROMS/RE-FORECAST/GET-DATA/OCN/bdry/${YEAR}"
 
 # 📁 Month-day subfolders
-FOLDERS=("0101" "0201" "0301" "0401" "0501" "0601" "0701" "0801" "0901" "1001" "1101" "1201")
+FOLDERS=("0201")
+#FOLDERS=("0201" "0301" "0401" "0501" "0601" "0701" "0801" "0901" "1001" "1101" "1201")
 
 # 🔁 Loop through each month folder
 for FOLDER in "${FOLDERS[@]}"; do
